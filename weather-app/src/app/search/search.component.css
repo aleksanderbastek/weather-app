@@ -1,0 +1,9 @@
+button#button1 {
+  position: relative;
+  bottom: 8px;
+  height: 50px;
+}
+#input {
+  width: 77%;
+  margin-left: 5%;
+}
