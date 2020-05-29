@@ -5,8 +5,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 
-import { city } from "./city";
-
 @Injectable({
   providedIn: "root",
 })
@@ -31,7 +29,7 @@ export class ApiService {
   getWeather(name: string) {
     return this.http.get(`${this.apiUrl}${name}`).pipe(
       tap((_) => console.log("fetched weather")),
-      catchError(this.handleError<city[]>("getWeather", []))
+      catchError(this.handleError("getWeather", []))
     );
   }
 }
