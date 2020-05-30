@@ -9,7 +9,6 @@ import { Observable } from "rxjs";
   styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit {
-  //city: any;
   woeid: Number;
 
   constructor(private api: ApiService) {}

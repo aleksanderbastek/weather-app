@@ -28,8 +28,8 @@ export class ApiService {
 
   getCityInfo(name: string) {
     return this.http.get(`${this.apiUrl}${name}`).pipe(
-      tap((_) => console.log("fetched weather")),
-      catchError(this.handleError("getWeather", []))
+      tap((_) => console.log("fetched CityInfo")),
+      catchError(this.handleError("getCityInfo", []))
     );
   }
 }
