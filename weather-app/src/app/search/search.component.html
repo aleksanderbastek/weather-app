@@ -1,8 +1,18 @@
 <mat-form-field appearance="fill" id="input">
   <mat-label>Wyszukaj pogodę dla miasta</mat-label>
-  <input matInput #taskName />
+  <input matInput #cityName />
 </mat-form-field>
 
-<button mat-raised-button color="primary" id="button1">
+<button
+  mat-raised-button
+  color="primary"
+  id="button1"
+  (click)="getCityInfo(cityName.value)"
+>
   Wyszukaj
 </button>
+<br />
+<p *ngIf="woeid">
+  pozyskany woeid:
+  {{ woeid }}
+</p>
