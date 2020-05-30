@@ -10,6 +10,7 @@ import { Observable } from "rxjs";
 })
 export class SearchComponent implements OnInit {
   weather;
+  woeid;
 
   constructor(private api: ApiService) {}
 
@@ -17,6 +18,8 @@ export class SearchComponent implements OnInit {
     this.weather = this.api.getWeather(name).subscribe((data) => {
       console.log(data);
       this.weather = data;
+      this.woeid = this.weather.map((r) => r.woeid);
+      this.woeid = parseInt(this.woeid);
     });
   }
 
