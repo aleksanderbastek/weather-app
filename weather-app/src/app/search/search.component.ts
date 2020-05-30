@@ -9,17 +9,15 @@ import { Observable } from "rxjs";
   styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit {
-  weather;
-  woeid;
+  //city: any;
+  woeid: Number;
 
   constructor(private api: ApiService) {}
 
-  getWeather(name: string): void {
-    this.weather = this.api.getWeather(name).subscribe((data) => {
+  getCityInfo(name: string): void {
+    this.api.getCityInfo(name).subscribe((data: any) => {
       console.log(data);
-      this.weather = data;
-      this.woeid = this.weather.map((r) => r.woeid);
-      this.woeid = parseInt(this.woeid);
+      this.woeid = Number(data.map((r) => r.woeid));
     });
   }
 

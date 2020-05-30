@@ -7,14 +7,12 @@
   mat-raised-button
   color="primary"
   id="button1"
-  (click)="getWeather(cityName.value)"
+  (click)="getCityInfo(cityName.value)"
 >
   Wyszukaj
 </button>
-
-<p *ngFor="let w of weather">
-  name: {{ w.title }}<br />
-  latt_long: {{ w.latt_long }}<br />
-  woeid: {{ w.woeid }}
+<br />
+<p *ngIf="woeid">
+  pozyskany woeid:
+  {{ woeid }}
 </p>
-{{ woeid }}

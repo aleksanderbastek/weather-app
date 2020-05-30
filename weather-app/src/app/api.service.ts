@@ -26,7 +26,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getWeather(name: string) {
+  getCityInfo(name: string) {
     return this.http.get(`${this.apiUrl}${name}`).pipe(
       tap((_) => console.log("fetched weather")),
       catchError(this.handleError("getWeather", []))
