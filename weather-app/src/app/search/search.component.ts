@@ -3,6 +3,8 @@ import { ApiService } from "../api.service";
 
 import { Observable } from "rxjs";
 
+import { weather } from "../weather";
+
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
@@ -10,7 +12,7 @@ import { Observable } from "rxjs";
 })
 export class SearchComponent implements OnInit {
   title: string;
-  weatherTable: any;
+  weatherTable: weather[];
   constructor(private api: ApiService) {}
 
   getWeather(id: Number): void {
