@@ -3,20 +3,34 @@ import { ApiService } from "../api.service";
 
 import { Observable } from "rxjs";
 
+import { weather } from "../weather";
+
+import { city } from "../city";
+
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
   styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit {
-  woeid: Number;
-
+  title: string;
+  weatherTable: weather[];
   constructor(private api: ApiService) {}
 
-  getCityInfo(name: string): void {
-    this.api.getCityInfo(name).subscribe((data: any) => {
+  getWeather(id: Number): void {
+    this.api.getWeather(id).subscribe((data: any) => {
       console.log(data);
-      this.woeid = Number(data.map((r) => r.woeid));
+      this.title = data.title;
+      this.weatherTable = data.consolidated_weather;
+      console.log(this.weatherTable);
+    });
+  }
+
+  getCityInfo(name: string): void {
+    this.api.getCityInfo(name).subscribe((data: city[]) => {
+      console.log(data);
+      const woeid: Number = Number(data.map((r) => r.woeid));
+      this.getWeather(woeid);
     });
   }
 
