@@ -11,13 +11,15 @@
 >
   Wyszukaj
 </button>
-<h1 *ngIf="title">
-  {{ title }}
-</h1>
+<div id="display">
+  <h1 *ngIf="title">
+    {{ title }}
+  </h1>
 
-<p *ngFor="let w of weatherTable">
-  {{ w.applicable_date }}<br />
-  {{ w.weather_state_name }}<br />
-  {{ w.the_temp }}<br />
-  {{ w.wind_direction }}<br />
-</p>
+  <p *ngFor="let w of weatherTable">
+    {{ w.applicable_date }}<br />
+    {{ w.weather_state_name }}<br />
+    {{ w.the_temp }}<br />
+    {{ w.wind_direction }}<br />
+  </p>
+</div>

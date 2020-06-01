@@ -5,6 +5,8 @@ import { Observable } from "rxjs";
 
 import { weather } from "../weather";
 
+import { city } from "../city";
+
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
@@ -25,7 +27,7 @@ export class SearchComponent implements OnInit {
   }
 
   getCityInfo(name: string): void {
-    this.api.getCityInfo(name).subscribe((data: any) => {
+    this.api.getCityInfo(name).subscribe((data: city[]) => {
       console.log(data);
       const woeid: Number = Number(data.map((r) => r.woeid));
       this.getWeather(woeid);
