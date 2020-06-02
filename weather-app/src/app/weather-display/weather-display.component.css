@@ -1,0 +1,10 @@
+div#serial {
+  float: left;
+  margin-left: 2%;
+}
+#size {
+  height: 150px;
+}
+#title {
+  margin-left: 2%;
+}

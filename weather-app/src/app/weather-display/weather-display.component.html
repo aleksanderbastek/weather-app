@@ -1,1 +1,33 @@
-<p>weather-display works!</p>
+<h1 *ngIf="title" id="title">
+  {{ title }}
+</h1>
+<div *ngFor="let w of weatherTable" id="imgSize">
+  <div id="serial">
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        {{ w.applicable_date | date: "MMM dd" }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item id="size">
+        <img
+          width="100px"
+          src="https://www.metaweather.com/static/img/weather/{{
+            w.weather_state_abbr
+          }}.svg"
+          alt=""
+        />
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        {{ w.weather_state_name }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item> {{ w.the_temp | number: "1.0-0" }} °C </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+</div>
