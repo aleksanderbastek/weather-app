@@ -11,7 +11,10 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { ApiService } from "./api.service";
-import { WeatherDisplayComponent } from './weather-display/weather-display.component';
+import { WeatherDisplayComponent } from "./weather-display/weather-display.component";
+
+import { MatListModule } from "@angular/material/list";
+import { MatDividerModule } from "@angular/material/divider";
 
 @NgModule({
   declarations: [AppComponent, SearchComponent, WeatherDisplayComponent],
@@ -23,6 +26,8 @@ import { WeatherDisplayComponent } from './weather-display/weather-display.compo
     MatIconModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatListModule,
+    MatDividerModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],
