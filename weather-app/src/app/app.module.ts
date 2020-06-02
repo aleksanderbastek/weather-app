@@ -11,9 +11,10 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { ApiService } from "./api.service";
+import { WeatherDisplayComponent } from './weather-display/weather-display.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent],
+  declarations: [AppComponent, SearchComponent, WeatherDisplayComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
