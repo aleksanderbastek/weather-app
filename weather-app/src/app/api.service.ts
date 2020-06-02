@@ -11,9 +11,10 @@ import { city } from "./city";
   providedIn: "root",
 })
 export class ApiService {
-  //https://cors-anywhere.herokuapp.com/
-  private cityUrl = "https://www.metaweather.com/api/location/search/?query=";
-  private weatherUrl = "https://www.metaweather.com/api/location/";
+  private cityUrl =
+    "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=";
+  private weatherUrl =
+    "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
