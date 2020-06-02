@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Input } from "@angular/core";
 
-import { weather } from "../weather";
+import { Weather } from "../weather";
 
 @Component({
   selector: "app-weather-display",
@@ -10,7 +10,7 @@ import { weather } from "../weather";
 })
 export class WeatherDisplayComponent implements OnInit {
   @Input() title: string;
-  @Input() weatherTable: weather[];
+  @Input() weatherTable: Weather[];
   constructor() {}
 
   ngOnInit(): void {}

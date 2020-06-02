@@ -1,4 +1,4 @@
-export interface weather {
+export interface Weather {
   air_pressure: number;
   applicable_date: Date;
   created: Date;

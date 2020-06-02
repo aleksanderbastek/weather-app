@@ -3,9 +3,9 @@ import { ApiService } from "../api.service";
 
 import { Observable } from "rxjs";
 
-import { weather } from "../weather";
+import { Weather } from "../weather";
 
-import { city } from "../city";
+import { City } from "../city";
 
 @Component({
   selector: "app-search",
@@ -14,10 +14,10 @@ import { city } from "../city";
 })
 export class SearchComponent implements OnInit {
   title: string;
-  weatherTable: weather[];
+  weatherTable: Weather[];
   constructor(private api: ApiService) {}
 
-  getWeather(id: Number): void {
+  getWeather(id: number): void {
     this.api.getWeather(id).subscribe((data: any) => {
       console.log(data);
       this.title = data.title;
@@ -27,9 +27,9 @@ export class SearchComponent implements OnInit {
   }
 
   getCityInfo(name: string): void {
-    this.api.getCityInfo(name).subscribe((data: city[]) => {
+    this.api.getCityInfo(name).subscribe((data: City[]) => {
       console.log(data);
-      const woeid: Number = Number(data.map((r) => r.woeid));
+      const woeid: number = Number(data.map((r) => r.woeid));
       this.getWeather(woeid);
     });
   }
