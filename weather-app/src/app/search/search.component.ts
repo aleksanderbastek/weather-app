@@ -15,7 +15,7 @@ import { City } from "../city";
 export class SearchComponent implements OnInit {
   title: string;
   weatherTable: Weather[];
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
 
   getWeather(id: number): void {
     this.api.getWeather(id).subscribe((data: any) => {
@@ -23,9 +23,10 @@ export class SearchComponent implements OnInit {
       this.title = data.title;
       this.weatherTable = data.consolidated_weather;
       console.log(this.weatherTable);
+      console.log(this.weatherTable);
+
     });
   }
-
   getCityInfo(name: string): void {
     this.api.getCityInfo(name).subscribe((data: City[]) => {
       console.log(data);
@@ -34,5 +35,5 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
