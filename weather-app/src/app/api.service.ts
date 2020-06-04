@@ -5,15 +5,16 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 
-import { city } from "./city";
+import { City } from "./city";
 
 @Injectable({
   providedIn: "root",
 })
 export class ApiService {
-  //https://cors-anywhere.herokuapp.com/
-  private cityUrl = "https://www.metaweather.com/api/location/search/?query=";
-  private weatherUrl = "https://www.metaweather.com/api/location/";
+  private cityUrl =
+    "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=";
+  private weatherUrl =
+    "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -28,13 +29,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getCityInfo(name: string): Observable<city[]> {
-    return this.http.get<city[]>(`${this.cityUrl}${name}`).pipe(
+  getCityInfo(name: string): Observable<City[]> {
+    return this.http.get<City[]>(`${this.cityUrl}${name}`).pipe(
       tap((_) => console.log("fetched CityInfo")),
-      catchError(this.handleError<city[]>("getCityInfo", []))
+      catchError(this.handleError<City[]>("getCityInfo", []))
     );
   }
-  getWeather(id: Number) {
+  getWeather(id: number) {
     return this.http.get(`${this.weatherUrl}${id}`).pipe(
       tap((_) => console.log("fetched Weather data")),
       catchError(this.handleError("getWeather", []))

@@ -12,14 +12,8 @@
   Wyszukaj
 </button>
 <div id="display">
-  <h1 *ngIf="title">
-    {{ title }}
-  </h1>
-
-  <p *ngFor="let w of weatherTable">
-    {{ w.applicable_date }}<br />
-    {{ w.weather_state_name }}<br />
-    {{ w.the_temp }}<br />
-    {{ w.wind_direction }}<br />
-  </p>
+  <app-weather-display
+    [title]="title"
+    [weatherTable]="weatherTable"
+  ></app-weather-display>
 </div>
