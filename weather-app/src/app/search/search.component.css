@@ -5,6 +5,7 @@ button#button1 {
 }
 #input {
   width: 77%;
+  height: 50px;
   margin-left: 5%;
 }
 div#display {

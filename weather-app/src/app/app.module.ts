@@ -16,6 +16,12 @@ import { WeatherDisplayComponent } from "./weather-display/weather-display.compo
 import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
 
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
+
 @NgModule({
   declarations: [AppComponent, SearchComponent, WeatherDisplayComponent],
   imports: [
@@ -28,8 +34,12 @@ import { MatDividerModule } from "@angular/material/divider";
     BrowserAnimationsModule,
     MatListModule,
     MatDividerModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService,
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

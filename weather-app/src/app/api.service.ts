@@ -27,7 +27,7 @@ export class ApiService {
     };
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCityInfo(name: string): Observable<City[]> {
     return this.http.get<City[]>(`${this.cityUrl}${name}`).pipe(
@@ -39,6 +39,13 @@ export class ApiService {
     return this.http.get(`${this.weatherUrl}${id}`).pipe(
       tap((_) => console.log("fetched Weather data")),
       catchError(this.handleError("getWeather", []))
+    );
+  }
+  getCitiesInfo(): Observable<City[]> {
+
+    return this.http.get<City[]>(`${this.cityUrl}a`).pipe(
+      tap(_ => console.log("fetched Cities Info")),
+      catchError(this.handleError<City[]>("getCitiesInfo", []))
     );
   }
 }
