@@ -7,9 +7,6 @@ import { Weather } from "../weather";
 
 import { City } from "../city";
 
-// firebasse
-import { AngularFireDatabase, AngularFireDatabaseModule } from "@angular/fire/database";
-
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
@@ -18,15 +15,7 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from "@angular/fire/da
 export class SearchComponent implements OnInit {
   title: string;
   weatherTable: Weather[];
-
-  cityValue: City;
-  cityData: Observable<any[]>;
-  constructor(
-    private api: ApiService,
-    private db: AngularFireDatabase
-    ) {
-      this.cityData = db.list('cityData').valueChanges();
-    }
+  constructor(private api: ApiService) {}
 
   getWeather(id: number): void {
     this.api.getWeather(id).subscribe((data: any) => {
@@ -39,12 +28,9 @@ export class SearchComponent implements OnInit {
 
   getCityInfo(name: string): void {
     this.api.getCityInfo(name).subscribe((data: City[]) => {
-      console.log(data); // tu otrzymuje informacje
+      console.log(data);
       const woeid: number = Number(data.map((r) => r.woeid));
       this.getWeather(woeid);
-      this.cityValue = data[0];
-      this.db.list("cityData").push({content: this.cityValue});
-      this.cityValue = null;
     });
   }
 

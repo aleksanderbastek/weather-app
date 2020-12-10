@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Input } from "@angular/core";
-import { Observable } from 'rxjs';
 
 import { Weather } from "../weather";
 
@@ -12,7 +11,6 @@ import { Weather } from "../weather";
 export class WeatherDisplayComponent implements OnInit {
   @Input() title: string;
   @Input() weatherTable: Weather[];
-  @Input() cityData: Observable<any>;
   constructor() {}
 
   ngOnInit(): void {}

@@ -16,11 +16,6 @@ import { WeatherDisplayComponent } from "./weather-display/weather-display.compo
 import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from "@angular/material/divider";
 
-// firebase
-import { AngularFireModule } from "@angular/fire";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
-import { environment } from "../environments/environment";
-
 @NgModule({
   declarations: [AppComponent, SearchComponent, WeatherDisplayComponent],
   imports: [
@@ -33,8 +28,6 @@ import { environment } from "../environments/environment";
     BrowserAnimationsModule,
     MatListModule,
     MatDividerModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

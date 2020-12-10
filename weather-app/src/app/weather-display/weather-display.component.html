@@ -31,14 +31,3 @@
     </mat-list>
   </div>
 </div>
-<div style="clear: both;"></div>
-<h1>Poprzednie wyszukiwania z bazy danych</h1>
-<div *ngFor="let item of cityData | async" class="wynik">
-  <ul>
-    <li>Title: {{item.content.title}}</li>
-    <li>Loaction type: {{item.content.location_type}}</li>
-    <li>Latt long: {{item.content.latt_long}}</li>
-    <li>id of city: {{item.content.woeid}}</li>
-  </ul>
-
-</div>
