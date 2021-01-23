@@ -2,10 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../api.service";
 
 import { Observable } from "rxjs";
+import { startWith, map } from 'rxjs/operators';
 
 import { Weather } from "../weather";
 
 import { City } from "../city";
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: "app-search",
@@ -15,7 +18,12 @@ import { City } from "../city";
 export class SearchComponent implements OnInit {
   title: string;
   weatherTable: Weather[];
-  constructor(private api: ApiService) {}
+
+  control = new FormControl();
+  CitiesNames: string[] = [];
+  filteredCitiesNames: Observable<string[]>;
+
+  constructor(private api: ApiService) { }
 
   getWeather(id: number): void {
     this.api.getWeather(id).subscribe((data: any) => {
@@ -33,6 +41,33 @@ export class SearchComponent implements OnInit {
       this.getWeather(woeid);
     });
   }
+  getCitiesInfo() {
+    this.api.getCitiesInfo().subscribe((data: City[]) => {
+      this.CitiesNames = data.map(r => r.title);
+      console.log(this.CitiesNames);
+    });
+  }
 
-  ngOnInit(): void {}
+  filter() {
+    this.filteredCitiesNames = this.control.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+
+    );
+  }
+
+  ngOnInit(): void {
+    this.getCitiesInfo();
+    this.filter();
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = this._normalizeValue(value);
+    return this.CitiesNames.filter(cityName => this._normalizeValue(cityName).includes(filterValue));
+  }
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
+
+
 }

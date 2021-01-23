@@ -1,19 +1,17 @@
-<mat-form-field appearance="fill" id="input">
+<mat-form-field id="input">
   <mat-label>Wyszukaj pogodę dla miasta</mat-label>
-  <input matInput #cityName />
+  <input matInput [matAutocomplete]="auto" [formControl]="control" #cityName formControlName="stateGroup" />
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let cityName of filteredCitiesNames | async" [value]="cityName">
+      {{cityName}}
+    </mat-option>
+  </mat-autocomplete>
 </mat-form-field>
 
-<button
-  mat-raised-button
-  color="primary"
-  id="button1"
-  (click)="getCityInfo(cityName.value)"
->
+<button mat-raised-button color="primary" id="button1" (click)="getCityInfo(cityName.value)">
   Wyszukaj
 </button>
 <div id="display">
-  <app-weather-display
-    [title]="title"
-    [weatherTable]="weatherTable"
-  ></app-weather-display>
+  <app-weather-display [title]="title" [weatherTable]="weatherTable"></app-weather-display>
 </div>
